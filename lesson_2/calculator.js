@@ -6,6 +6,7 @@
 // Ask user to perform another calculation
 
 const readline = require("readline-sync");
+const MESSAGES = require("./messages.json");
 
 function prompt(message) {
   console.log(`=> ${message}`);
@@ -16,32 +17,30 @@ function invalidNumber(number) {
 }
 
 let answer;
-prompt("Welcome to Calculator!");
+prompt(MESSAGES.welcome);
 
 do {
-  prompt("What's the first number?");
+  prompt(MESSAGES.firstNum);
   let number1 = readline.question();
 
   while (invalidNumber(number1)) {
-    prompt("Hmm... that doesn't look like a valid number.");
+    prompt(MESSAGES.invalidNum);
     number1 = readline.question();
   }
 
-  prompt("What's the second number?");
+  prompt(MESSAGES.secondNum);
   let number2 = readline.question();
 
   while (invalidNumber(number2)) {
-    prompt("Hmm... that doesn't look like a valid number.");
+    prompt(MESSAGES.invalidNum);
     number2 = readline.question();
   }
 
-  prompt(
-    "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide"
-  );
+  prompt(MESSAGES.operation);
   let operation = readline.question();
 
   while (!["1", "2", "3", "4"].includes(operation)) {
-    prompt("Must choose 1, 2, 3 or 4");
+    prompt(MESSAGES.invalidOperation);
     operation = readline.question();
   }
 
@@ -62,8 +61,8 @@ do {
       break;
   }
 
-  prompt(`The result is ${output}`);
+  prompt(`${MESSAGES.result} ${output}`);
 
-  prompt("Would you like to perform another operation? (y/n)");
+  prompt(MESSAGES.askCalculation);
   answer = readline.question();
 } while (answer === "y");
