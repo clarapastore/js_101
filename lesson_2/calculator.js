@@ -42,15 +42,6 @@ while (!["1", "2", "3", "4"].includes(operation)) {
 }
 
 let output;
-// if (operation === "1") {
-//   output = Number(number1) + Number(number2);
-// } else if (operation === "2") {
-//   output = Number(number1) - Number(number2);
-// } else if (operation === "3") {
-//   output = Number(number1) * Number(number2);
-// } else if (operation === "4") {
-//   output = Number(number1) / Number(number2);
-// }
 
 switch (operation) {
   case "1":
