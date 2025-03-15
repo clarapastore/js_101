@@ -6,17 +6,16 @@
 // Ask user to perform another calculation
 
 const readline = require("readline-sync");
-// figure out how to get the current locale and save to a variable
-let locale = "it_IT.UTF-8";
-const MESSAGES = require(selectMessagesLanguage(locale));
+let localeLanguage = navigator.language;
+const MESSAGES = require(selectMessagesLanguage(localeLanguage));
 
-function extractLocaleLanguage(locale) {
-  return locale.split("_")[0];
+function extractLocaleLanguageCode(locale) {
+  return locale.split("-")[0];
 }
 
 function selectMessagesLanguage(locale) {
-  let localeLanguage = extractLocaleLanguage(locale);
-  switch (localeLanguage) {
+  let localeLanguageCode = extractLocaleLanguageCode(locale);
+  switch (localeLanguageCode) {
     case "en":
       return "./messages_en.json";
     case "it":
