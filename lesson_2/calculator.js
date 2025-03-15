@@ -8,6 +8,10 @@
 const readline = require("readline-sync");
 const MESSAGES = require("./messages.json");
 
+function extractLocaleLanguage(locale) {
+  return locale.split("_")[0];
+}
+
 function prompt(message) {
   console.log(`=> ${message}`);
 }
