@@ -6,10 +6,22 @@
 // Ask user to perform another calculation
 
 const readline = require("readline-sync");
-const MESSAGES = require("./messages.json");
+const MESSAGES = require("./messages_en.json");
 
 function extractLocaleLanguage(locale) {
   return locale.split("_")[0];
+}
+
+function selectMessagesLanguage(locale) {
+  let localeLanguage = extractLocaleLanguage(locale);
+  switch (localeLanguage) {
+    case "en":
+      return "./messages_en.json";
+    case "it":
+      return "./messages_it.json";
+    default:
+      return "./messages_en.json";
+  }
 }
 
 function prompt(message) {
@@ -20,6 +32,7 @@ function invalidNumber(number) {
   return number.trimStart() === "" || Number.isNaN(Number(number));
 }
 
+console.log(selectMessagesLanguage("ab_IT.UTF-8"));
 let answer;
 prompt(MESSAGES.welcome);
 
