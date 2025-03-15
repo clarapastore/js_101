@@ -6,7 +6,9 @@
 // Ask user to perform another calculation
 
 const readline = require("readline-sync");
-const MESSAGES = require("./messages_en.json");
+// figure out how to get the current locale and save to a variable
+let locale = "it_IT.UTF-8";
+const MESSAGES = require(selectMessagesLanguage(locale));
 
 function extractLocaleLanguage(locale) {
   return locale.split("_")[0];
@@ -32,7 +34,6 @@ function invalidNumber(number) {
   return number.trimStart() === "" || Number.isNaN(Number(number));
 }
 
-console.log(selectMessagesLanguage("ab_IT.UTF-8"));
 let answer;
 prompt(MESSAGES.welcome);
 
