@@ -1,0 +1,10 @@
+{
+  "welcome": "Benvenuto alla Calcolatrice!",
+  "firstNum": "Qual è il primo numero?",
+  "secondNum": "Qual è il secondo numero?",
+  "invalidNum": "Mmm... questo non sembra un numero.",
+  "operation": "Quale operazione vuoi fare?\n1) Addizione 2) Sottrazione 3) Moltiplicazione 4) Divisione",
+  "invalidOperation": "Devi scegliere un numero tra 1, 2, 3 o 4",
+  "result": "Il risultato è",
+  "askCalculation": "Vuoi fare un'altra operazione? (y/n)"
+}
