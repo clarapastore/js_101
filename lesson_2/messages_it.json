@@ -5,6 +5,7 @@
   "invalidNum": "Mmm... questo non sembra un numero.",
   "operation": "Quale operazione vuoi fare?\n1) Addizione 2) Sottrazione 3) Moltiplicazione 4) Divisione",
   "invalidOperation": "Devi scegliere un numero tra 1, 2, 3 o 4",
+  "zeroDivision": "Avvertimento: non si può dividere per zero.",
   "result": "Il risultato è",
   "askCalculation": "Vuoi fare un'altra operazione? (y/n)",
   "goodbye": "Grazie per aver usato la Calcolatrice!"
