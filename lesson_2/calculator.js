@@ -83,3 +83,5 @@ do {
   prompt(MESSAGES.askCalculation);
   answer = readline.question();
 } while (answer === "y");
+
+prompt(MESSAGES.goodbye);
