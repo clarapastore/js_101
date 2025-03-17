@@ -85,4 +85,5 @@ while (true) {
     prompt(MESSAGES.goodbye);
     break;
   }
+  console.clear();
 }
