@@ -74,6 +74,9 @@ while (true) {
       break;
     case "4":
       output = Number(number1) / Number(number2);
+      if (Number(number2) === 0) {
+        prompt(MESSAGES.zeroDivision);
+      }
       break;
   }
 
