@@ -33,10 +33,9 @@ function invalidNumber(number) {
   return number.trimStart() === "" || Number.isNaN(Number(number));
 }
 
-let answer;
 prompt(MESSAGES.welcome);
 
-do {
+while (true) {
   prompt(MESSAGES.firstNum);
   let number1 = readline.question();
 
@@ -81,7 +80,9 @@ do {
   prompt(`${MESSAGES.result} ${output}`);
 
   prompt(MESSAGES.askCalculation);
-  answer = readline.question();
-} while (answer === "y");
-
-prompt(MESSAGES.goodbye);
+  let answer = readline.question();
+  if (answer !== "y") {
+    prompt(MESSAGES.goodbye);
+    break;
+  }
+}
