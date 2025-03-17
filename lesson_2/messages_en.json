@@ -6,5 +6,6 @@
   "operation": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
   "invalidOperation": "Must choose 1, 2, 3 or 4",
   "result": "The result is",
-  "askCalculation": "Would you like to perform another operation? (y/n)"
+  "askCalculation": "Would you like to perform another operation? (y/n)",
+  "goodbye": "Thanks for using Calculator!"
 }
