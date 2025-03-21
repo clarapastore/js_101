@@ -34,6 +34,10 @@ function removePercentage(interest) {
   }
 }
 
+function prompt(message) {
+  console.log(`=> ${message}`);
+}
+
 function loanAmountInputToNum(amount) {
   return Number(removeDollarSign(amount));
 }
