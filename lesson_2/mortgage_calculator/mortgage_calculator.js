@@ -98,6 +98,10 @@ function calculateMonthlyPayment(
   return monthlyPayment.toFixed(2);
 }
 
+// TODO: make this a loop so that user can ask another calc
+// Acceptable answers are y or yes
+// can be both uppercase or lowercase
+
 prompt(MESSAGES.welcome);
 
 loanAmount = loanAmountInputToNum(
