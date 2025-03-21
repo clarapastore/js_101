@@ -118,37 +118,42 @@ function calculateMonthlyPayment(
 
 console.log("Welcome to Mortgage Calculator!");
 
-loanAmount = getValidatedInput(
-  "What's the mortgage amount you have to pay?",
-  invalidLoanAmount,
-  "Hmmm, this is not a valid loan amount.\nPlease write an integer loan amount between $1 and $1000000000 with no commas."
+loanAmount = loanAmountInputToNum(
+  getValidatedInput(
+    "What's the mortgage amount you have to pay?",
+    invalidLoanAmount,
+    "Hmmm, this is not a valid loan amount.\nPlease write an integer loan amount between $1 and $1000000000 with no commas."
+  )
 );
 
-annualInterestRate = getValidatedInput(
-  "What's the annual interest rate of your mortgage?",
-  invalidInterestRate,
-  "Hmm, this is not a valid interest rate.\nPlease write a rate higher than 0% and lower than 35%"
+annualInterestRate = interestInputToNum(
+  getValidatedInput(
+    "What's the annual interest rate of your mortgage?",
+    invalidInterestRate,
+    "Hmm, this is not a valid interest rate.\nPlease write a rate higher than 0% and lower than 35%"
+  )
 );
 
 while (true) {
-  loanDurationYears = getValidatedInput(
-    "What's your mortgage duration in years?",
-    invalidLoanYears,
-    "Hmm, this is not a valid year duration.\nPlease write an integer number between 0 and 100."
+  loanDurationYears = Number(
+    getValidatedInput(
+      "What's your mortgage duration in years?",
+      invalidLoanYears,
+      "Hmm, this is not a valid year duration.\nPlease write an integer number between 0 and 100."
+    )
   );
 
-  loanDurationMonths = getValidatedInput(
-    "What's your loan duration in months?",
-    invalidLoanMonths,
-    "Hmm, this is not a valid month duration.\nPlease write an integer between 0 and 11."
+  loanDurationMonths = Number(
+    getValidatedInput(
+      "What's your loan duration in months?",
+      invalidLoanMonths,
+      "Hmm, this is not a valid month duration.\nPlease write an integer between 0 and 11."
+    )
   );
 
   if (
     invalidTotalLoanDurationInMonths(
-      calculateTotalLoanDurationInMonths(
-        Number(loanDurationYears),
-        Number(loanDurationMonths)
-      )
+      calculateTotalLoanDurationInMonths(loanDurationYears, loanDurationMonths)
     )
   ) {
     console.log(
@@ -163,11 +168,10 @@ while (true) {
 // do the calculation
 
 monthlyPayment = calculateMonthlyPayment(
-  loanAmountInputToNum(loanAmount),
-  calculateMonthlyInterestPercentage(interestInputToNum(annualInterestRate)),
-  calculateTotalLoanDurationInMonths(
-    Number(loanDurationYears),
-    Number(loanDurationMonths)
-  )
+  loanAmount,
+  calculateMonthlyInterestPercentage(annualInterestRate),
+  calculateTotalLoanDurationInMonths(loanDurationYears, loanDurationMonths)
 );
-console.log(`Your monthly payment is $${monthlyPayment}`);
+console.log(
+  `Given your mortgage amount of $${loanAmount}, your interest rate of ${annualInterestRate}%, and your total mortgage duration of ${loanDurationYears} year/s and ${loanDurationMonths} month/s:\nYour monthly payment is $${monthlyPayment}`
+);
