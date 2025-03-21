@@ -1,7 +1,5 @@
 // TODO: find a way to clear the console every now and then,
 // especially when there are lots of wrong attempts
-// in the getValidatedInput function, set variable failedAttempt
-// and initialize it to 0
 // inside the while loop, increase failedAttempt variable by one
 // if failedAttempt is even (every other failedAttemmpt), clear the console
 
@@ -61,12 +59,14 @@ function invalidTotalLoanDurationInMonths(months) {
 }
 
 function getValidatedInput(question, invalidInputFunc, errorMsg) {
-  // declare and initialize var failedAttempt to 0
+  let failedAttempt = 0;
   prompt(question);
   let input = readline.question();
   while (invalidInputFunc(input)) {
-    // increase failedAttempt variable by one
-    // if failedAttempt is even, clear the console
+    failedAttempt += 1;
+    if (failedAttempt % 2 === 0) {
+      console.clear();
+    }
     prompt(errorMsg);
     input = readline.question();
   }
