@@ -1,13 +1,10 @@
-// TODO: export functions to a separate mortgage_functions.js file
-// TODO: import mortgage_functions.js file
-// TODO: refactor function calls to be made from imported functions
-// of mortgage_functions.js file
 // TODO: allow the user to ask for another mortgage calculation
 // TODO: find a way to clear the console every now and then,
 // especially when there are lots of wrong attempts
 
 let readline = require("readline-sync");
 const MESSAGES = require("./messages.json");
+const HELPER_FUNCTIONS = require("./mortgage_helpers");
 let loanAmount,
   annualInterestRate,
   loanDurationYears,
@@ -15,34 +12,16 @@ let loanAmount,
   monthlyPayment;
 const MONTHS_IN_A_YEAR = 12;
 
-function removeDollarSign(amount) {
-  amount = amount.trim();
-  if (amount[0] === "$") {
-    return amount.slice(1);
-  } else {
-    return amount;
-  }
-}
-
-function removePercentage(interest) {
-  interest = interest.trim();
-  if (interest[interest.length - 1] === "%") {
-    return interest.substring(0, interest.length - 1);
-  } else {
-    return interest;
-  }
-}
-
 function prompt(message) {
   console.log(`=> ${message}`);
 }
 
 function loanAmountInputToNum(amount) {
-  return Number(removeDollarSign(amount));
+  return Number(HELPER_FUNCTIONS.removeDollarSign(amount));
 }
 
 function interestInputToNum(interest) {
-  return Number(removePercentage(interest));
+  return Number(HELPER_FUNCTIONS.removePercentage(interest));
 }
 
 function invalidLoanAmount(amount) {
@@ -93,12 +72,9 @@ function getValidatedInput(question, invalidInputFunc, errorMsg) {
   return input;
 }
 
-function calculateYearlyInterestPercentage(interest) {
-  return interest / 100;
-}
-
 function calculateMonthlyInterestPercentage(interest) {
-  let yearlyInterestPercentage = calculateYearlyInterestPercentage(interest);
+  let yearlyInterestPercentage =
+    HELPER_FUNCTIONS.calculateYearlyInterestPercentage(interest);
   return yearlyInterestPercentage / 12;
 }
 
