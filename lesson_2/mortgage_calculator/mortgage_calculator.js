@@ -1,4 +1,3 @@
-// TODO: create a prompt function to differentiate from stout of terminal
 // TODO: export functions to a separate mortgage_functions.js file
 // TODO: import mortgage_functions.js file
 // TODO: refactor function calls to be made from imported functions
