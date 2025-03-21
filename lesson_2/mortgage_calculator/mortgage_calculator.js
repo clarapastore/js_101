@@ -1,5 +1,3 @@
-// TODO: improve question asking for years by reassuring user
-// that months will also be asked
 // TODO: find a way to clear the console every now and then,
 // especially when there are lots of wrong attempts
 // in the getValidatedInput function, set variable failedAttempt
