@@ -85,10 +85,10 @@ function invalidTotalLoanDurationInMonths(months) {
 }
 
 function getValidatedInput(question, invalidInputFunc, errorMsg) {
-  console.log(question);
+  prompt(question);
   let input = readline.question();
   while (invalidInputFunc(input)) {
-    console.log(errorMsg);
+    prompt(errorMsg);
     input = readline.question();
   }
   return input;
@@ -123,7 +123,7 @@ function calculateMonthlyPayment(
   return monthlyPayment.toFixed(2);
 }
 
-console.log(MESSAGES.welcome);
+prompt(MESSAGES.welcome);
 
 loanAmount = loanAmountInputToNum(
   getValidatedInput(
@@ -163,7 +163,7 @@ while (true) {
       calculateTotalLoanDurationInMonths(loanDurationYears, loanDurationMonths)
     )
   ) {
-    console.log(MESSAGES.invalidTotalMonths);
+    prompt(MESSAGES.invalidTotalMonths);
   } else {
     break;
   }
@@ -174,6 +174,6 @@ monthlyPayment = calculateMonthlyPayment(
   calculateMonthlyInterestPercentage(annualInterestRate),
   calculateTotalLoanDurationInMonths(loanDurationYears, loanDurationMonths)
 );
-console.log(
+prompt(
   `Given your mortgage amount of $${loanAmount}, your interest rate of ${annualInterestRate}%, and your total mortgage duration of ${loanDurationYears} year/s and ${loanDurationMonths} month/s:\nYour monthly payment is $${monthlyPayment}`
 );
