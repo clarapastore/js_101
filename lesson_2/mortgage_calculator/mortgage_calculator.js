@@ -50,6 +50,7 @@ function invalidLoanAmount(amount) {
 }
 
 function invalidInterestRate(interest) {
+  interest = interestInputToNum(interest);
   return Number.isNaN(interest) || interest <= 0 || interest > 35;
 }
 
@@ -74,6 +75,16 @@ function invalidLoanMonths(months) {
 
 function invalidTotalLoanDurationInMonths(months) {
   return months === 0;
+}
+
+function getValidatedInput(question, invalidInputFunc, errorMsg) {
+  console.log(question);
+  let input = readline.question();
+  while (invalidInputFunc(input)) {
+    console.log(errorMsg);
+    input = readline.question();
+  }
+  return input;
 }
 
 function calculateYearlyInterestPercentage(interest) {
@@ -107,34 +118,30 @@ function calculateMonthlyPayment(
 
 console.log("Welcome to Mortgage Calculator!");
 
-console.log("What's the loan amount you have to pay?");
-loanAmount = readline.question();
-while (invalidLoanAmount(loanAmount)) {
-  console.log("Hmmm, this is not a valid amount.");
-  loanAmount = readline.question();
-}
+loanAmount = getValidatedInput(
+  "What's the loan amount you have to pay?",
+  invalidLoanAmount,
+  "Hmmm, this is not a valid loan amount."
+);
 
-console.log("What's the annual interest rate?");
-annualInterestRate = readline.question();
-while (invalidInterestRate(annualInterestRate)) {
-  console.log("Hmmm, this is not a valid amount.");
-  annualInterestRate = readline.question();
-}
+annualInterestRate = getValidatedInput(
+  "What's the annual interest rate?",
+  invalidInterestRate,
+  "Hmm, this is not a valid interest rate."
+);
 
 while (true) {
-  console.log("What's your loan duration in years?");
-  loanDurationYears = readline.question();
-  while (invalidLoanYears(loanDurationYears)) {
-    console.log("Hmmm, this is not a valid year duration.");
-    loanDurationYears = readline.question();
-  }
+  loanDurationYears = getValidatedInput(
+    "What's your loan duration in years?",
+    invalidLoanYears,
+    "Hmm, this is not a valid year duration."
+  );
 
-  console.log("What's your loan duration in months?");
-  loanDurationMonths = readline.question();
-  while (invalidLoanMonths(loanDurationMonths)) {
-    console.log("Hmmm, this is not a valid month duration.");
-    loanDurationMonths = readline.question();
-  }
+  loanDurationMonths = getValidatedInput(
+    "What's your loan duration in months?",
+    invalidLoanMonths,
+    "Hmm, this is not a valid month duration."
+  );
 
   if (
     invalidTotalLoanDurationInMonths(
