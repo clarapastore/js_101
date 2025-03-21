@@ -157,7 +157,7 @@ while (true) {
     )
   ) {
     console.log(
-      "You cannot have a mortgage duration of 0 years and 0 months.\nThe mortgage duration needs to be at least 1 month.\n"
+      "You cannot have a mortgage duration of 0 years and 0 months.\nThe total mortgage duration needs to be at least 1 month.\n"
     );
   } else {
     break;
