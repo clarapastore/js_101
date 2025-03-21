@@ -113,7 +113,6 @@ while (invalidLoanAmount(loanAmount)) {
   console.log("Hmmm, this is not a valid amount.");
   loanAmount = readline.question();
 }
-console.log(`Your loan amount is ${loanAmount}`);
 
 console.log("What's the annual interest rate?");
 annualInterestRate = readline.question();
@@ -121,7 +120,6 @@ while (invalidInterestRate(annualInterestRate)) {
   console.log("Hmmm, this is not a valid amount.");
   annualInterestRate = readline.question();
 }
-console.log(`Your annual interest rate is ${annualInterestRate}`);
 
 while (true) {
   console.log("What's your loan duration in years?");
@@ -130,7 +128,6 @@ while (true) {
     console.log("Hmmm, this is not a valid year duration.");
     loanDurationYears = readline.question();
   }
-  console.log(`Your loan duration in years is ${loanDurationYears} years`);
 
   console.log("What's your loan duration in months?");
   loanDurationMonths = readline.question();
@@ -138,7 +135,6 @@ while (true) {
     console.log("Hmmm, this is not a valid month duration.");
     loanDurationMonths = readline.question();
   }
-  console.log(`Your loan duration in months is ${loanDurationMonths} months`);
 
   if (
     invalidTotalLoanDurationInMonths(
