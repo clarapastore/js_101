@@ -1,0 +1,14 @@
+{
+  "welcome": "Welcome to Mortgage Calculator!",
+  "loanQuestion": "What's the mortgage amount you have to pay?",
+  "invalidLoan": "Hmmm, this is not a valid loan amount.\nPlease write an integer loan amount between $1 and $1000000000 with no commas.",
+  "interestQuestion": "What's the annual interest rate of your mortgage?",
+  "invalidInterest": "Hmm, this is not a valid interest rate.\nPlease write a rate higher than 0% and lower than 35%",
+  "loanYearsQuestion": "What's your mortgage duration in years?",
+  "invalidYears": "Hmm, this is not a valid year duration.\nPlease write an integer number between 0 and 100.",
+  "loanMonthsQuestion": "What's your loan duration in months?",
+  "invalidMonths": "Hmm, this is not a valid month duration.\nPlease write an integer between 0 and 11.",
+  "invalidTotalMonths": "You cannot have a mortgage duration of 0 years and 0 months.\nThe total mortgage duration needs to be at least 1 month.\n",
+  "result": "Your monthly payment is",
+  "goodbye": "Thanks for using Mortgage Calculator!"
+}

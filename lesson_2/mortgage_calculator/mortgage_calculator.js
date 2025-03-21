@@ -1,5 +1,3 @@
-// TODO: export strings of messages to a JSON file
-// TODO: import JSON file of messages
 // TODO: create a prompt function to differentiate from stout of terminal
 // TODO: export functions to a separate mortgage_functions.js file
 // TODO: import mortgage_functions.js file
@@ -10,6 +8,7 @@
 // especially when there are lots of wrong attempts
 
 let readline = require("readline-sync");
+const MESSAGES = require("./messages.json");
 let loanAmount,
   annualInterestRate,
   loanDurationYears,
@@ -120,38 +119,38 @@ function calculateMonthlyPayment(
   return monthlyPayment.toFixed(2);
 }
 
-console.log("Welcome to Mortgage Calculator!");
+console.log(MESSAGES.welcome);
 
 loanAmount = loanAmountInputToNum(
   getValidatedInput(
-    "What's the mortgage amount you have to pay?",
+    MESSAGES.loanQuestion,
     invalidLoanAmount,
-    "Hmmm, this is not a valid loan amount.\nPlease write an integer loan amount between $1 and $1000000000 with no commas."
+    MESSAGES.invalidLoan
   )
 );
 
 annualInterestRate = interestInputToNum(
   getValidatedInput(
-    "What's the annual interest rate of your mortgage?",
+    MESSAGES.interestQuestion,
     invalidInterestRate,
-    "Hmm, this is not a valid interest rate.\nPlease write a rate higher than 0% and lower than 35%"
+    MESSAGES.invalidInterest
   )
 );
 
 while (true) {
   loanDurationYears = Number(
     getValidatedInput(
-      "What's your mortgage duration in years?",
+      MESSAGES.loanYearsQuestion,
       invalidLoanYears,
-      "Hmm, this is not a valid year duration.\nPlease write an integer number between 0 and 100."
+      MESSAGES.invalidYears
     )
   );
 
   loanDurationMonths = Number(
     getValidatedInput(
-      "What's your loan duration in months?",
+      MESSAGES.loanMonthsQuestion,
       invalidLoanMonths,
-      "Hmm, this is not a valid month duration.\nPlease write an integer between 0 and 11."
+      MESSAGES.invalidMonths
     )
   );
 
@@ -160,9 +159,7 @@ while (true) {
       calculateTotalLoanDurationInMonths(loanDurationYears, loanDurationMonths)
     )
   ) {
-    console.log(
-      "You cannot have a mortgage duration of 0 years and 0 months.\nThe total mortgage duration needs to be at least 1 month.\n"
-    );
+    console.log(MESSAGES.invalidTotalMonths);
   } else {
     break;
   }
