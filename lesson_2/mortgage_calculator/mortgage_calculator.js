@@ -123,33 +123,35 @@ while (invalidInterestRate(annualInterestRate)) {
 }
 console.log(`Your annual interest rate is ${annualInterestRate}`);
 
-console.log("What's your loan duration in years?");
-loanDurationYears = readline.question();
-while (invalidLoanYears(loanDurationYears)) {
-  console.log("Hmmm, this is not a valid year duration.");
+while (true) {
+  console.log("What's your loan duration in years?");
   loanDurationYears = readline.question();
-}
-console.log(`Your loan duration in years is ${loanDurationYears} years`);
+  while (invalidLoanYears(loanDurationYears)) {
+    console.log("Hmmm, this is not a valid year duration.");
+    loanDurationYears = readline.question();
+  }
+  console.log(`Your loan duration in years is ${loanDurationYears} years`);
 
-console.log("What's your loan duration in months?");
-loanDurationMonths = readline.question();
-while (invalidLoanMonths(loanDurationMonths)) {
-  console.log("Hmmm, this is not a valid month duration.");
+  console.log("What's your loan duration in months?");
   loanDurationMonths = readline.question();
-}
-console.log(`Your loan duration in months is ${loanDurationMonths} months`);
+  while (invalidLoanMonths(loanDurationMonths)) {
+    console.log("Hmmm, this is not a valid month duration.");
+    loanDurationMonths = readline.question();
+  }
+  console.log(`Your loan duration in months is ${loanDurationMonths} months`);
 
-// TODO: calculate total of months and years
-// add validation for total of months and years
-// if zero, should be able to ask for years and months again
-// Probably makes sense to do a do-while loop in here
-
-if (invalidTotalLoanDurationInMonths(loanDurationYears, loanDurationMonths)) {
-  console.log("You can't have a loan duration of 0 years and 0 months");
-} else {
-  console.log(
-    `Your loan duration is ${loanDurationYears} years and ${loanDurationMonths} months.`
-  );
+  if (
+    invalidTotalLoanDurationInMonths(
+      calculateTotalLoanDurationInMonths(
+        Number(loanDurationYears),
+        Number(loanDurationMonths)
+      )
+    )
+  ) {
+    console.log("Invalid total loan duration!");
+  } else {
+    break;
+  }
 }
 
 // Now that we've verified that everything is valid and
