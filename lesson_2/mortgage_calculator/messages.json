@@ -10,5 +10,6 @@
   "invalidMonths": "Hmm, this is not a valid month duration.\nPlease write an integer between 0 and 11.",
   "invalidTotalMonths": "You cannot have a mortgage duration of 0 years and 0 months.\nThe total mortgage duration needs to be at least 1 month.\n",
   "result": "Your monthly payment is",
+  "askAnotherCalc": "Do you want to calculate another mortgage? (y/n)",
   "goodbye": "Thanks for using Mortgage Calculator!"
 }
