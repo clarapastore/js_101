@@ -6,11 +6,6 @@
 let readline = require("readline-sync");
 const MESSAGES = require("./messages.json");
 const HELPERS = require("./mortgage_helpers");
-let loanAmount,
-  annualInterestRate,
-  loanDurationYears,
-  loanDurationMonths,
-  monthlyPayment;
 const MONTHS_IN_A_YEAR = 12;
 
 function prompt(message) {
@@ -102,6 +97,12 @@ function calculateMonthlyPayment(
 prompt(MESSAGES.welcome);
 
 while (true) {
+  let loanAmount,
+    annualInterestRate,
+    loanDurationYears,
+    loanDurationMonths,
+    monthlyPayment;
+
   loanAmount = loanAmountInputToNum(
     getValidatedInput(
       MESSAGES.loanQuestion,
