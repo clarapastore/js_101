@@ -119,28 +119,28 @@ function calculateMonthlyPayment(
 console.log("Welcome to Mortgage Calculator!");
 
 loanAmount = getValidatedInput(
-  "What's the loan amount you have to pay?",
+  "What's the mortgage amount you have to pay?",
   invalidLoanAmount,
-  "Hmmm, this is not a valid loan amount."
+  "Hmmm, this is not a valid loan amount.\nPlease write an integer loan amount between $1 and $1000000000 with no commas."
 );
 
 annualInterestRate = getValidatedInput(
-  "What's the annual interest rate?",
+  "What's the annual interest rate of your mortgage?",
   invalidInterestRate,
-  "Hmm, this is not a valid interest rate."
+  "Hmm, this is not a valid interest rate.\nPlease write a rate higher than 0% and lower than 35%"
 );
 
 while (true) {
   loanDurationYears = getValidatedInput(
-    "What's your loan duration in years?",
+    "What's your mortgage duration in years?",
     invalidLoanYears,
-    "Hmm, this is not a valid year duration."
+    "Hmm, this is not a valid year duration.\nPlease write an integer number between 0 and 100."
   );
 
   loanDurationMonths = getValidatedInput(
     "What's your loan duration in months?",
     invalidLoanMonths,
-    "Hmm, this is not a valid month duration."
+    "Hmm, this is not a valid month duration.\nPlease write an integer between 0 and 11."
   );
 
   if (
@@ -151,7 +151,9 @@ while (true) {
       )
     )
   ) {
-    console.log("Invalid total loan duration!");
+    console.log(
+      "You cannot have a mortgage duration of 0 years and 0 months.\nThe mortgage duration needs to be at least 1 month.\n"
+    );
   } else {
     break;
   }
