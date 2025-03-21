@@ -157,8 +157,7 @@ while (true) {
   }
 }
 
-// Now that we've verified that everything is valid and
-// that our variables are actually Numbers
+// Now that we've verified that everything is valid
 // do the calculation
 
 monthlyPayment = calculateMonthlyPayment(
