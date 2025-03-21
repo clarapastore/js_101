@@ -1,9 +1,13 @@
-// Get the loan amount
-// Get annual percentage rate
-// Get loan duration
-// Calculate monthly payment
-// Output monthly payment
-// Ask to calculate another loan
+// TODO: export strings of messages to a JSON file
+// TODO: import JSON file of messages
+// TODO: create a prompt function to differentiate from stout of terminal
+// TODO: export functions to a separate mortgage_functions.js file
+// TODO: import mortgage_functions.js file
+// TODO: refactor function calls to be made from imported functions
+// of mortgage_functions.js file
+// TODO: allow the user to ask for another mortgage calculation
+// TODO: find a way to clear the console every now and then,
+// especially when there are lots of wrong attempts
 
 let readline = require("readline-sync");
 let loanAmount,
@@ -163,9 +167,6 @@ while (true) {
     break;
   }
 }
-
-// Now that we've verified that everything is valid
-// do the calculation
 
 monthlyPayment = calculateMonthlyPayment(
   loanAmount,
