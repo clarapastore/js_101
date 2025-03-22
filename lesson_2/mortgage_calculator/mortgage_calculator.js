@@ -1,8 +1,3 @@
-// TODO: find a way to clear the console every now and then,
-// especially when there are lots of wrong attempts
-// inside the while loop, increase failedAttempt variable by one
-// if failedAttempt is even (every other failedAttemmpt), clear the console
-
 let readline = require("readline-sync");
 const MESSAGES = require("./messages.json");
 const HELPERS = require("./mortgage_helpers");
