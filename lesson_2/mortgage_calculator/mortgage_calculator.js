@@ -1,5 +1,3 @@
-// Improve answer to make sure user inputs no or n,
-// and yes or y (independent of uppercase and lowercase)
 let readline = require("readline-sync");
 const MESSAGES = require("./messages.json");
 const HELPERS = require("./mortgage_helpers");
