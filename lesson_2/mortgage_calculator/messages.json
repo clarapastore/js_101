@@ -11,5 +11,6 @@
   "invalidTotalMonths": "You cannot have a mortgage duration of 0 years and 0 months.\nThe total mortgage duration needs to be at least 1 month.\n",
   "result": "Your monthly payment is",
   "askAnotherCalc": "Do you want to calculate another mortgage? (y/n)",
+  "invalidAnotherCalc": "Please enter 'y' or 'n'",
   "goodbye": "Thanks for using Mortgage Calculator!"
 }
