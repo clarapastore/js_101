@@ -5,7 +5,7 @@ function prompt(message) {
   console.log(`=> ${message}`);
 }
 
-prompt("Choose one: rock, paper, scissors");
+prompt(`Choose one: ${VALID_CHOICES.join(", ")}`);
 let choice = readline.question();
 
 while (!VALID_CHOICES.includes(choice)) {
