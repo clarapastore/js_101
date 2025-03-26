@@ -19,3 +19,21 @@ while (!VALID_CHOICES.includes(choice)) {
 
 let computerChoice = VALID_CHOICES[chooseRandomIndex()];
 prompt(`You chose ${choice}, computer chose ${computerChoice}`);
+
+// deciding the winner based on the conditions
+// Writing the conditional for the case the user wins:
+if (
+  (choice === "rock" && computerChoice === "scissors") ||
+  (choice === "paper" && computerChoice === "rock") ||
+  (choice === "scissors" && computerChoice === "paper")
+) {
+  prompt("You win!");
+} else if (
+  (choice === "rock" && computerChoice === "paper") ||
+  (choice === "paper" && computerChoice === "scissors") ||
+  (choice === "scissors" && computerChoice === "rock")
+) {
+  prompt("Computer wins!");
+} else {
+  prompt("It's a tie!");
+}
