@@ -1,3 +1,4 @@
+// Make it clear in the prompt that shortcuts are also possible
 const readline = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_SHORTCUTS = ["r", "p", "sc", "l", "sp"];
