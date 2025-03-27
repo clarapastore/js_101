@@ -11,8 +11,8 @@ function isChoiceShortcut(choice) {
   return choice.length <= MAX_LENGTH_SHORTCUT;
 }
 
-function turnShortcutIntoValidChoice(choice) {
-  return VALID_CHOICES[VALID_SHORTCUTS.indexOf(choice)];
+function getFullChoice(shortcut) {
+  return VALID_CHOICES[VALID_SHORTCUTS.indexOf(shortcut)];
 }
 
 function chooseRandomIndex() {
@@ -68,7 +68,7 @@ while (true) {
   }
 
   if (isChoiceShortcut(choice)) {
-    choice = turnShortcutIntoValidChoice(choice);
+    choice = getFullChoice(choice);
   }
 
   let computerChoice = VALID_CHOICES[chooseRandomIndex()];
