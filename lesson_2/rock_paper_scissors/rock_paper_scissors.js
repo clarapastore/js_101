@@ -13,14 +13,27 @@ function displayWinner(choice, computerChoice) {
   if (
     (choice === "rock" &&
       (computerChoice === "scissors" || computerChoice === "lizard")) ||
-    (choice === "paper" && computerChoice === "rock") ||
-    (choice === "scissors" && computerChoice === "paper")
+    (choice === "paper" &&
+      (computerChoice === "rock" || computerChoice === "spock")) ||
+    (choice === "scissors" &&
+      (computerChoice === "paper" || computerChoice === "lizard")) ||
+    (choice === "lizard" &&
+      (computerChoice === "paper" || computerChoice === "spock")) ||
+    (choice === "spock" &&
+      (computerChoice === "rock" || computerChoice === "scissors"))
   ) {
     prompt("You win!");
   } else if (
-    (choice === "rock" && computerChoice === "paper") ||
-    (choice === "paper" && computerChoice === "scissors") ||
-    (choice === "scissors" && computerChoice === "rock")
+    (choice === "rock" &&
+      (computerChoice === "paper" || computerChoice === "spock")) ||
+    (choice === "paper" &&
+      (computerChoice === "scissors" || computerChoice === "lizard")) ||
+    (choice === "scissors" &&
+      (computerChoice === "rock" || computerChoice === "spock")) ||
+    (choice === "lizard" &&
+      (computerChoice === "scissors" || computerChoice === "rock")) ||
+    (choice === "spock" &&
+      (computerChoice === "paper" || computerChoice === "lizard"))
   ) {
     prompt("Computer wins!");
   } else {
