@@ -1,4 +1,6 @@
-// Make it clear in the prompt that shortcuts are also possible
+// TODO: best of five
+// TODO: Make it clear in the prompt that shortcuts are also possible
+// (r, p, sc, l, sp)
 const readline = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_SHORTCUTS = ["r", "p", "sc", "l", "sp"];
