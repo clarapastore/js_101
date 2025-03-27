@@ -11,7 +11,8 @@ function chooseRandomIndex() {
 
 function displayWinner(choice, computerChoice) {
   if (
-    (choice === "rock" && computerChoice === "scissors") ||
+    (choice === "rock" &&
+      (computerChoice === "scissors" || computerChoice === "lizard")) ||
     (choice === "paper" && computerChoice === "rock") ||
     (choice === "scissors" && computerChoice === "paper")
   ) {
@@ -30,6 +31,10 @@ function displayWinner(choice, computerChoice) {
 while (true) {
   prompt(`Choose one: ${VALID_CHOICES.join(", ")}`);
   let choice = readline.question();
+  // make a function here that checks if the valid choice shortcut given is good
+  // for example, a switch statement that goes through all the good shortcuts
+  // and reassigns the choice variable if the shortcut matches
+  // otherwise returns null, which is a falsy value
 
   while (!VALID_CHOICES.includes(choice)) {
     prompt("That's not a valid choice");
