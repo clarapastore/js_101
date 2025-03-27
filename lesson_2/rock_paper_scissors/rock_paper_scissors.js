@@ -9,32 +9,40 @@ function chooseRandomIndex() {
   return Math.floor(Math.random() * VALID_CHOICES.length);
 }
 
-function displayWinner(choice, computerChoice) {
-  if (
-    (choice === "rock" &&
+function playerWins(playerChoice, computerChoice) {
+  return (
+    (playerChoice === "rock" &&
       (computerChoice === "scissors" || computerChoice === "lizard")) ||
-    (choice === "paper" &&
+    (playerChoice === "paper" &&
       (computerChoice === "rock" || computerChoice === "spock")) ||
-    (choice === "scissors" &&
+    (playerChoice === "scissors" &&
       (computerChoice === "paper" || computerChoice === "lizard")) ||
-    (choice === "lizard" &&
+    (playerChoice === "lizard" &&
       (computerChoice === "paper" || computerChoice === "spock")) ||
-    (choice === "spock" &&
+    (playerChoice === "spock" &&
       (computerChoice === "rock" || computerChoice === "scissors"))
-  ) {
-    prompt("You win!");
-  } else if (
-    (choice === "rock" &&
+  );
+}
+
+function computerWins(playerChoice, computerChoice) {
+  return (
+    (playerChoice === "rock" &&
       (computerChoice === "paper" || computerChoice === "spock")) ||
-    (choice === "paper" &&
+    (playerChoice === "paper" &&
       (computerChoice === "scissors" || computerChoice === "lizard")) ||
-    (choice === "scissors" &&
+    (playerChoice === "scissors" &&
       (computerChoice === "rock" || computerChoice === "spock")) ||
-    (choice === "lizard" &&
+    (playerChoice === "lizard" &&
       (computerChoice === "scissors" || computerChoice === "rock")) ||
-    (choice === "spock" &&
+    (playerChoice === "spock" &&
       (computerChoice === "paper" || computerChoice === "lizard"))
-  ) {
+  );
+}
+
+function displayWinner(choice, computerChoice) {
+  if (playerWins(choice, computerChoice)) {
+    prompt("You win!");
+  } else if (computerWins(choice, computerChoice)) {
     prompt("Computer wins!");
   } else {
     prompt("It's a tie!");
