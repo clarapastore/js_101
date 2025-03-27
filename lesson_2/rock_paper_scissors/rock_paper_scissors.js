@@ -1,8 +1,18 @@
 const readline = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
+const VALID_SHORTCUTS = ["r", "p", "sc", "l", "sp"];
+const MAX_LENGTH_SHORTCUT = 2;
 
 function prompt(message) {
   console.log(`=> ${message}`);
+}
+
+function isChoiceShortcut(choice) {
+  return choice.length <= MAX_LENGTH_SHORTCUT;
+}
+
+function turnShortcutIntoValidChoice(choice) {
+  return VALID_CHOICES[VALID_SHORTCUTS.indexOf(choice)];
 }
 
 function chooseRandomIndex() {
@@ -52,14 +62,13 @@ function displayWinner(choice, computerChoice) {
 while (true) {
   prompt(`Choose one: ${VALID_CHOICES.join(", ")}`);
   let choice = readline.question();
-  // make a function here that checks if the valid choice shortcut given is good
-  // for example, a switch statement that goes through all the good shortcuts
-  // and reassigns the choice variable if the shortcut matches
-  // otherwise returns null, which is a falsy value
-
-  while (!VALID_CHOICES.includes(choice)) {
+  while (!VALID_CHOICES.includes(choice) && !VALID_SHORTCUTS.includes(choice)) {
     prompt("That's not a valid choice");
     choice = readline.question();
+  }
+
+  if (isChoiceShortcut(choice)) {
+    choice = turnShortcutIntoValidChoice(choice);
   }
 
   let computerChoice = VALID_CHOICES[chooseRandomIndex()];
