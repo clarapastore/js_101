@@ -1,3 +1,4 @@
+// Extract logic of askAnotherRound and getValidInput into a generic function
 const readline = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_SHORTCUTS = ["r", "p", "sc", "l", "sp"];
