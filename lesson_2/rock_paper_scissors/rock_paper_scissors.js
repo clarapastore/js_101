@@ -63,6 +63,14 @@ function displayWinner(choice, computerChoice) {
   }
 }
 
+function updateScore(choice, computerChoice) {
+  if (playerWins(choice, computerChoice)) {
+    score.player += 1;
+  } else if (computerWins(choice, computerChoice)) {
+    score.computer += 1;
+  }
+}
+
 while (true) {
   prompt(`Choose one: ${VALID_CHOICES.join(", ")}`);
   let choice = readline.question();
@@ -79,12 +87,10 @@ while (true) {
   prompt(`You chose ${choice}, computer chose ${computerChoice}`);
 
   displayWinner(choice, computerChoice);
-
-  if (playerWins(choice, computerChoice)) {
-    score.player += 1;
-  } else if (computerWins(choice, computerChoice)) {
-    score.computer += 1;
-  }
+  updateScore(choice, computerChoice);
+  prompt(
+    `The current score is:\n You: ${score.player}, Computer: ${score.computer}`
+  );
 
   prompt("Do you want to play another game? (y/n)");
   let answer = readline.question().toLowerCase();
