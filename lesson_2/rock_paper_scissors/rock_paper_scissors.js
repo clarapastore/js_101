@@ -62,6 +62,9 @@ function displayWinner(choice, computerChoice) {
   }
 }
 
+let playerWin = 0;
+let computerWin = 0;
+
 while (true) {
   prompt(`Choose one: ${VALID_CHOICES.join(", ")}`);
   let choice = readline.question();
@@ -78,6 +81,14 @@ while (true) {
   prompt(`You chose ${choice}, computer chose ${computerChoice}`);
 
   displayWinner(choice, computerChoice);
+
+  if (playerWins(choice, computerChoice)) {
+    playerWin += 1;
+    console.log(playerWin);
+  } else if (computerWins(choice, computerChoice)) {
+    computerWin += 1;
+    console.log(computerWin);
+  }
 
   prompt("Do you want to play another game? (y/n)");
   let answer = readline.question().toLowerCase();
