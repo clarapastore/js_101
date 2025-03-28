@@ -1,7 +1,6 @@
-// TODO: Make it clear in the prompt that shortcuts are also possible
-// (r, p, sc, l, sp)
 // TODO: refactor input validation and assignment to its own function
 // TODO: figure out how to extract play another round into its own function
+// TODO: clear the console after player decides to play another game
 const readline = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_SHORTCUTS = ["r", "p", "sc", "l", "sp"];
@@ -10,6 +9,15 @@ let score = { player: 0, computer: 0 };
 
 function prompt(message) {
   console.log(`=> ${message}`);
+}
+
+function getValidInput() {
+  let input = readline.question();
+  while (!VALID_CHOICES.includes(input) && !VALID_SHORTCUTS.includes(input)) {
+    prompt("That's not a valid choice");
+    input = readline.question();
+  }
+  return input;
 }
 
 function isChoiceShortcut(choice) {
@@ -97,11 +105,7 @@ while (true) {
       ", "
     )}\nHINT: try the shortcuts ${VALID_SHORTCUTS.join(", ")}`
   );
-  let choice = readline.question();
-  while (!VALID_CHOICES.includes(choice) && !VALID_SHORTCUTS.includes(choice)) {
-    prompt("That's not a valid choice");
-    choice = readline.question();
-  }
+  let choice = getValidInput();
 
   if (isChoiceShortcut(choice)) {
     choice = getFullChoice(choice);
