@@ -10,10 +10,10 @@ function prompt(message) {
 }
 
 function getValidInput() {
-  let input = readline.question();
+  let input = readline.question().toLowerCase();
   while (!VALID_CHOICES.includes(input) && !VALID_SHORTCUTS.includes(input)) {
     prompt("That's not a valid choice");
-    input = readline.question();
+    input = readline.question().toLowerCase();
   }
   return input;
 }
