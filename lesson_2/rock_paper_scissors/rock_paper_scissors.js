@@ -53,21 +53,40 @@ function computerWins(playerChoice, computerChoice) {
   );
 }
 
-function displayWinner(choice, computerChoice) {
+function computeTurnResult(choice, computerChoice) {
   if (playerWins(choice, computerChoice)) {
-    prompt("You win!");
+    return "player";
   } else if (computerWins(choice, computerChoice)) {
-    prompt("Computer wins!");
+    return "computer";
   } else {
-    prompt("It's a tie!");
+    return "tie";
   }
 }
 
-function updateScore(choice, computerChoice) {
-  if (playerWins(choice, computerChoice)) {
-    score.player += 1;
-  } else if (computerWins(choice, computerChoice)) {
-    score.computer += 1;
+function displayWinner(turnScore) {
+  switch (turnScore) {
+    case "player":
+      prompt("You win!");
+      break;
+    case "computer":
+      prompt("Computer wins!");
+      break;
+    case "tie":
+      prompt("It's a tie!");
+      break;
+  }
+}
+
+function updateScore(turnScore) {
+  switch (turnScore) {
+    case "player":
+      score.player += 1;
+      break;
+    case "computer":
+      score.computer += 1;
+      break;
+    default:
+      break;
   }
 }
 
@@ -86,8 +105,10 @@ while (true) {
   let computerChoice = VALID_CHOICES[chooseRandomIndex()];
   prompt(`You chose ${choice}, computer chose ${computerChoice}`);
 
-  displayWinner(choice, computerChoice);
-  updateScore(choice, computerChoice);
+  let turnResult = computeTurnResult(choice, computerChoice);
+
+  displayWinner(turnResult);
+  updateScore(turnResult);
   prompt(
     `The current score is:\n You: ${score.player}, Computer: ${score.computer}`
   );
