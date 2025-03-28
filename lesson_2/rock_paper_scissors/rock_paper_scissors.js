@@ -1,4 +1,3 @@
-// TODO: refactor input validation and assignment to its own function
 // TODO: figure out how to extract play another round into its own function
 // TODO: clear the console after player decides to play another game
 const readline = require("readline-sync");
