@@ -142,4 +142,5 @@ while (true) {
       break;
     }
   }
+  console.clear();
 }
