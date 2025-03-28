@@ -113,6 +113,10 @@ while (true) {
     `The current score is:\n You: ${score.player}, Computer: ${score.computer}`
   );
 
+  // compare the score!
+  // if no winning condition, do the prompt to play again
+  // if winning condition, show winner and break from the loop
+
   prompt("Do you want to play another game? (y/n)");
   let answer = readline.question().toLowerCase();
   while (answer[0] !== "y" && answer[0] !== "n") {
