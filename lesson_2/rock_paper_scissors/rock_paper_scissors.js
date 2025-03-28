@@ -1,5 +1,7 @@
 // TODO: Make it clear in the prompt that shortcuts are also possible
 // (r, p, sc, l, sp)
+// TODO: refactor input validation and assignment to its own function
+// TODO: figure out how to extract play another round into its own function
 const readline = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_SHORTCUTS = ["r", "p", "sc", "l", "sp"];
@@ -119,12 +121,17 @@ while (true) {
     prompt("Computer has won!");
     break;
   } else {
+    // code from here to next comment should be its own function
+    // askAnotherRound
+    // assign answer to the function
+    // return the input answer as a string
     prompt("Do you want to play another game? (y/n)");
     let answer = readline.question().toLowerCase();
     while (answer[0] !== "y" && answer[0] !== "n") {
       prompt("This is not a valid answer. Please enter y or n.");
       answer = readline.question().toLowerCase();
     }
+    // end of anotherRound function
     if (answer[0] !== "y") {
       break;
     }
