@@ -2,6 +2,7 @@ const readline = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_SHORTCUTS = ["r", "p", "sc", "l", "sp"];
 const MAX_LENGTH_SHORTCUT = 2;
+const WINNING_CONDITION_NUM = 3;
 let score = { player: 0, computer: 0 };
 
 function prompt(message) {
@@ -129,10 +130,10 @@ while (true) {
     `The current score is:\n You: ${score.player}, Computer: ${score.computer}`
   );
 
-  if (score.player === 3) {
+  if (score.player === WINNING_CONDITION_NUM) {
     prompt("You have won!");
     break;
-  } else if (score.computer === 3) {
+  } else if (score.computer === WINNING_CONDITION_NUM) {
     prompt("Game over! Computer has won!");
     break;
   } else {
