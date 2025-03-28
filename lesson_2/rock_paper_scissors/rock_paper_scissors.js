@@ -1,4 +1,12 @@
-// Extract logic of askAnotherRound and getValidInput into a generic function
+// TODO: Create a messages.json to store the messages for the prompt
+// TODO: Extract logic of askAnotherRound and getValidInput
+// //    into a generic function
+// //    This might require creating two helper functions for the conditions
+// //    For example, isValidAnswer, and isValidChoice
+// TODO: Improve logic of playerWins and computerWins
+// //    by using a winning condition obj
+// TODO: improve the logic of isValidAnswer
+// //    make it so that only y or yes, n and no are ok answers
 const readline = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_SHORTCUTS = ["r", "p", "sc", "l", "sp"];
