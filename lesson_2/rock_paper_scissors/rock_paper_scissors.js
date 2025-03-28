@@ -92,7 +92,11 @@ function updateScore(turnScore) {
 }
 
 while (true) {
-  prompt(`Choose one: ${VALID_CHOICES.join(", ")}`);
+  prompt(
+    `Choose one: ${VALID_CHOICES.join(
+      ", "
+    )}\nHINT: try the shortcuts ${VALID_SHORTCUTS.join(", ")}`
+  );
   let choice = readline.question();
   while (!VALID_CHOICES.includes(choice) && !VALID_SHORTCUTS.includes(choice)) {
     prompt("That's not a valid choice");
