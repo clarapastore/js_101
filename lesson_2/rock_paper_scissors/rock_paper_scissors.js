@@ -1,4 +1,3 @@
-// TODO: clear the console after player decides to play another game
 const readline = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_SHORTCUTS = ["r", "p", "sc", "l", "sp"];
@@ -134,7 +133,7 @@ while (true) {
     prompt("You have won!");
     break;
   } else if (score.computer === 3) {
-    prompt("Computer has won!");
+    prompt("Game over! Computer has won!");
     break;
   } else {
     let answer = askAnotherRound();
