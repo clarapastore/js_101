@@ -1,4 +1,3 @@
-// TODO: best of five
 // TODO: Make it clear in the prompt that shortcuts are also possible
 // (r, p, sc, l, sp)
 const readline = require("readline-sync");
@@ -113,17 +112,21 @@ while (true) {
     `The current score is:\n You: ${score.player}, Computer: ${score.computer}`
   );
 
-  // compare the score!
-  // if no winning condition, do the prompt to play again
-  // if winning condition, show winner and break from the loop
-
-  prompt("Do you want to play another game? (y/n)");
-  let answer = readline.question().toLowerCase();
-  while (answer[0] !== "y" && answer[0] !== "n") {
-    prompt("This is not a valid answer. Please enter y or n.");
-    answer = readline.question().toLowerCase();
-  }
-  if (answer[0] !== "y") {
+  if (score.player === 3) {
+    prompt("You have won!");
     break;
+  } else if (score.computer === 3) {
+    prompt("Computer has won!");
+    break;
+  } else {
+    prompt("Do you want to play another game? (y/n)");
+    let answer = readline.question().toLowerCase();
+    while (answer[0] !== "y" && answer[0] !== "n") {
+      prompt("This is not a valid answer. Please enter y or n.");
+      answer = readline.question().toLowerCase();
+    }
+    if (answer[0] !== "y") {
+      break;
+    }
   }
 }
