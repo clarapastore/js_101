@@ -5,7 +5,7 @@ const readline = require("readline-sync");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_SHORTCUTS = ["r", "p", "sc", "l", "sp"];
 const MAX_LENGTH_SHORTCUT = 2;
-let stand = { player: 0, computer: 0 };
+let score = { player: 0, computer: 0 };
 
 function prompt(message) {
   console.log(`=> ${message}`);
@@ -81,9 +81,9 @@ while (true) {
   displayWinner(choice, computerChoice);
 
   if (playerWins(choice, computerChoice)) {
-    stand.player += 1;
+    score.player += 1;
   } else if (computerWins(choice, computerChoice)) {
-    stand.computer += 1;
+    score.computer += 1;
   }
 
   prompt("Do you want to play another game? (y/n)");
