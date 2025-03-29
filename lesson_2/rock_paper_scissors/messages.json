@@ -9,7 +9,7 @@
   "computerWinsRound": "Computer won this round!",
   "currentScore": "The current score is:",
   "roundIsTie": "This round ends in a tie!",
-  "askAnotherRound": "Do you want to play another game? (y/n)",
+  "askAnotherRound": "Do you want to play another round? (y/n)",
   "invalidRoundAnswer": "This is not a valid answer. Please enter y or n.",
   "playerWinsMatch": "Congrats! You have won the match!",
   "computerWinsMatch": "Game over! Computer has won the match."

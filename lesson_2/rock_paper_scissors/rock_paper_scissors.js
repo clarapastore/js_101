@@ -1,7 +1,3 @@
-// TODO: Extract logic of askAnotherRound and getValidInput
-// //    into a generic function
-// //    This might require creating two helper functions for the conditions
-// //    For example, isValidAnswer, and isValidChoice
 // TODO: Improve logic of playerWins and computerWins
 // //    by using a winning condition obj
 // TODO: improve the logic of isValidAnswer
@@ -18,13 +14,22 @@ function prompt(message) {
   console.log(`=> ${message}`);
 }
 
-function getValidInput() {
+function getValidInput(isInputValid, invalidMsg, requestMsg) {
+  if (requestMsg) prompt(requestMsg);
   let input = readline.question().toLowerCase();
-  while (!VALID_CHOICES.includes(input) && !VALID_SHORTCUTS.includes(input)) {
-    prompt(MESSAGES.invalidChoice);
+  while (!isInputValid(input)) {
+    prompt(invalidMsg);
     input = readline.question().toLowerCase();
   }
   return input;
+}
+
+function isValidChoice(input) {
+  return VALID_CHOICES.includes(input) || VALID_SHORTCUTS.includes(input);
+}
+
+function isValidAnswer(input) {
+  return input[0] === "y" || input[0] === "n";
 }
 
 function isChoiceShortcut(choice) {
@@ -106,14 +111,29 @@ function updateScore(turnScore) {
   }
 }
 
-function askAnotherRound() {
-  prompt(MESSAGES.askAnotherRound);
-  let input = readline.question().toLowerCase();
-  while (input[0] !== "y" && input[0] !== "n") {
-    prompt(MESSAGES.invalidRoundAnswer);
-    input = readline.question().toLowerCase();
+function askUserToContinue() {
+  let answer = getValidInput(
+    isValidAnswer,
+    MESSAGES.invalidRoundAnswer,
+    MESSAGES.askAnotherRound
+  );
+  if (answer[0] !== "y") {
+    return true;
+  } else {
+    return false;
   }
-  return input;
+}
+
+function isGameOver() {
+  if (score.player === WINNING_CONDITION_NUM) {
+    prompt(MESSAGES.playerWinsMatch);
+    return true;
+  } else if (score.computer === WINNING_CONDITION_NUM) {
+    prompt(MESSAGES.computerWinsMatch);
+    return true;
+  } else {
+    return askUserToContinue();
+  }
 }
 
 while (true) {
@@ -122,7 +142,7 @@ while (true) {
       MESSAGES.shortcutHint
     } ${VALID_SHORTCUTS.join(", ")}`
   );
-  let choice = getValidInput();
+  let choice = getValidInput(isValidChoice, MESSAGES.invalidChoice);
 
   if (isChoiceShortcut(choice)) {
     choice = getFullChoice(choice);
@@ -141,17 +161,7 @@ while (true) {
     `${MESSAGES.currentScore}\n You: ${score.player}, Computer: ${score.computer}`
   );
 
-  if (score.player === WINNING_CONDITION_NUM) {
-    prompt(MESSAGES.playerWinsMatch);
-    break;
-  } else if (score.computer === WINNING_CONDITION_NUM) {
-    prompt(MESSAGES.computerWinsMatch);
-    break;
-  } else {
-    let answer = askAnotherRound();
-    if (answer[0] !== "y") {
-      break;
-    }
-  }
+  if (isGameOver()) break;
+
   console.clear();
 }
