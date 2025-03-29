@@ -1,5 +1,5 @@
 {
-  "welcome": "Welcome to Rock Paper Scissors Lizard Spock!",
+  "welcome": "Welcome to Rock, Paper, Scissors, Lizard, Spock!",
   "askChoice": "Choose one of the following:",
   "invalidChoice": "That's not a valid choice",
   "shortcutHint": "HINT: try the shortcuts",
@@ -12,5 +12,6 @@
   "askAnotherRound": "Do you want to play another round? (y/n)",
   "invalidRoundAnswer": "This is not a valid answer. Please enter y or n.",
   "playerWinsMatch": "Congrats! You have won the match!",
-  "computerWinsMatch": "Game over! Computer has won the match."
+  "computerWinsMatch": "Game over! Computer has won the match.",
+  "goodbye": "We hope you enjoyed Rock, Paper, Scissors, Lizard, Spock!"
 }

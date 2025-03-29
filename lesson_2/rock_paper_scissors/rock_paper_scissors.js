@@ -128,14 +128,6 @@ function isFinalWinner(propString) {
   return score[propString] === WINNING_CONDITION_NUM;
 }
 
-// function displayFinalWinner() {
-//   if (isFinalWinner("player")) {
-//     prompt(MESSAGES.playerWinsMatch);
-//   } else if (isFinalWinner("computer")) {
-//     prompt(MESSAGES.computerWinsMatch);
-//   }
-// }
-
 function isGameOver() {
   if (isFinalWinner("player")) {
     prompt(MESSAGES.playerWinsMatch);
@@ -147,6 +139,8 @@ function isGameOver() {
     return askUserToContinue();
   }
 }
+
+prompt(MESSAGES.welcome);
 
 while (true) {
   prompt(
@@ -177,3 +171,5 @@ while (true) {
 
   console.clear();
 }
+
+prompt(MESSAGES.goodbye);
