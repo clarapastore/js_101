@@ -1,0 +1,16 @@
+{
+  "welcome": "Welcome to Rock Paper Scissors Lizard Spock!",
+  "askChoice": "Choose one of the following:",
+  "invalidChoice": "That's not a valid choice",
+  "shortcutHint": "HINT: try the shortcuts",
+  "playerChoiceIs": "You chose",
+  "computerChoiceIs": "Computer chose",
+  "playerWinsRound": "You won this round!",
+  "computerWinsRound": "Computer won this round!",
+  "currentScore": "The current score is:",
+  "roundIsTie": "This round ends in a tie!",
+  "askAnotherRound": "Do you want to play another game? (y/n)",
+  "invalidRoundAnswer": "This is not a valid answer. Please enter y or n.",
+  "playerWinsMatch": "Congrats! You have won the match!",
+  "computerWinsMatch": "Game over! Computer has won the match."
+}

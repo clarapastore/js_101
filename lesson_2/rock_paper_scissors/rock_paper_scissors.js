@@ -1,4 +1,3 @@
-// TODO: Create a messages.json to store the messages for the prompt
 // TODO: Extract logic of askAnotherRound and getValidInput
 // //    into a generic function
 // //    This might require creating two helper functions for the conditions
@@ -8,6 +7,7 @@
 // TODO: improve the logic of isValidAnswer
 // //    make it so that only y or yes, n and no are ok answers
 const readline = require("readline-sync");
+const MESSAGES = require("./messages.json");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_SHORTCUTS = ["r", "p", "sc", "l", "sp"];
 const MAX_LENGTH_SHORTCUT = 2;
@@ -21,7 +21,7 @@ function prompt(message) {
 function getValidInput() {
   let input = readline.question().toLowerCase();
   while (!VALID_CHOICES.includes(input) && !VALID_SHORTCUTS.includes(input)) {
-    prompt("That's not a valid choice");
+    prompt(MESSAGES.invalidChoice);
     input = readline.question().toLowerCase();
   }
   return input;
@@ -82,13 +82,13 @@ function computeTurnResult(choice, computerChoice) {
 function displayWinner(turnScore) {
   switch (turnScore) {
     case "player":
-      prompt("You win!");
+      prompt(MESSAGES.playerWinsRound);
       break;
     case "computer":
-      prompt("Computer wins!");
+      prompt(MESSAGES.computerWinsRound);
       break;
     case "tie":
-      prompt("It's a tie!");
+      prompt(MESSAGES.roundIsTie);
       break;
   }
 }
@@ -107,10 +107,10 @@ function updateScore(turnScore) {
 }
 
 function askAnotherRound() {
-  prompt("Do you want to play another game? (y/n)");
+  prompt(MESSAGES.askAnotherRound);
   let input = readline.question().toLowerCase();
   while (input[0] !== "y" && input[0] !== "n") {
-    prompt("This is not a valid answer. Please enter y or n.");
+    prompt(MESSAGES.invalidRoundAnswer);
     input = readline.question().toLowerCase();
   }
   return input;
@@ -118,9 +118,9 @@ function askAnotherRound() {
 
 while (true) {
   prompt(
-    `Choose one: ${VALID_CHOICES.join(
-      ", "
-    )}\nHINT: try the shortcuts ${VALID_SHORTCUTS.join(", ")}`
+    `${MESSAGES.askChoice} ${VALID_CHOICES.join(", ")}\n${
+      MESSAGES.shortcutHint
+    } ${VALID_SHORTCUTS.join(", ")}`
   );
   let choice = getValidInput();
 
@@ -129,21 +129,23 @@ while (true) {
   }
 
   let computerChoice = VALID_CHOICES[chooseRandomIndex()];
-  prompt(`You chose ${choice}, computer chose ${computerChoice}`);
+  prompt(
+    `${MESSAGES.playerChoiceIs} ${choice}, ${MESSAGES.computerChoiceIs} ${computerChoice}`
+  );
 
   let turnResult = computeTurnResult(choice, computerChoice);
 
   displayWinner(turnResult);
   updateScore(turnResult);
   prompt(
-    `The current score is:\n You: ${score.player}, Computer: ${score.computer}`
+    `${MESSAGES.currentScore}\n You: ${score.player}, Computer: ${score.computer}`
   );
 
   if (score.player === WINNING_CONDITION_NUM) {
-    prompt("You have won!");
+    prompt(MESSAGES.playerWinsMatch);
     break;
   } else if (score.computer === WINNING_CONDITION_NUM) {
-    prompt("Game over! Computer has won!");
+    prompt(MESSAGES.computerWinsMatch);
     break;
   } else {
     let answer = askAnotherRound();
