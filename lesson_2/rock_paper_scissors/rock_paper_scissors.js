@@ -84,7 +84,7 @@ function computeTurnResult(choice, computerChoice) {
   }
 }
 
-function displayWinner(turnScore) {
+function displayTurnWinner(turnScore) {
   switch (turnScore) {
     case "player":
       prompt(MESSAGES.playerWinsRound);
@@ -124,11 +124,23 @@ function askUserToContinue() {
   }
 }
 
+function isFinalWinner(propString) {
+  return score[propString] === WINNING_CONDITION_NUM;
+}
+
+// function displayFinalWinner() {
+//   if (isFinalWinner("player")) {
+//     prompt(MESSAGES.playerWinsMatch);
+//   } else if (isFinalWinner("computer")) {
+//     prompt(MESSAGES.computerWinsMatch);
+//   }
+// }
+
 function isGameOver() {
-  if (score.player === WINNING_CONDITION_NUM) {
+  if (isFinalWinner("player")) {
     prompt(MESSAGES.playerWinsMatch);
     return true;
-  } else if (score.computer === WINNING_CONDITION_NUM) {
+  } else if (isFinalWinner("computer")) {
     prompt(MESSAGES.computerWinsMatch);
     return true;
   } else {
@@ -155,7 +167,7 @@ while (true) {
 
   let turnResult = computeTurnResult(choice, computerChoice);
 
-  displayWinner(turnResult);
+  displayTurnWinner(turnResult);
   updateScore(turnResult);
   prompt(
     `${MESSAGES.currentScore}\n You: ${score.player}, Computer: ${score.computer}`
