@@ -1,5 +1,3 @@
-// TODO: Improve logic of playerWins and computerWins
-// //    by using a winning condition obj
 // TODO: improve the logic of isValidAnswer
 // //    make it so that only y or yes, n and no are ok answers
 // TODO: maybe add console.clear() at the beginning of the program?
@@ -37,7 +35,7 @@ function isValidChoice(input) {
 }
 
 function isValidAnswer(input) {
-  return input[0] === "y" || input[0] === "n";
+  return input === "y" || input === "yes" || input === "n" || input === "no";
 }
 
 function isChoiceShortcut(choice) {
