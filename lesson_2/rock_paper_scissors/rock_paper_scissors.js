@@ -1,5 +1,3 @@
-// TODO: improve the logic of isValidAnswer
-// //    make it so that only y or yes, n and no are ok answers
 // TODO: maybe add console.clear() at the beginning of the program?
 const readline = require("readline-sync");
 const MESSAGES = require("./messages.json");
