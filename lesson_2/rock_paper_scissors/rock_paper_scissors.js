@@ -122,6 +122,7 @@ function isGameOver() {
   }
 }
 
+console.clear();
 prompt(MESSAGES.welcome);
 
 while (true) {
