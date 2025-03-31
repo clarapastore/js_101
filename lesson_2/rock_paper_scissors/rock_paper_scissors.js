@@ -1,4 +1,3 @@
-// TODO: maybe add console.clear() at the beginning of the program?
 const readline = require("readline-sync");
 const MESSAGES = require("./messages.json");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
