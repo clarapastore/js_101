@@ -8,6 +8,13 @@ const MESSAGES = require("./messages.json");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_SHORTCUTS = ["r", "p", "sc", "l", "sp"];
 const MAX_LENGTH_SHORTCUT = 2;
+const WINNING_COMBOS = {
+  rock: ["scissors", "lizard"],
+  paper: ["rock", "spock"],
+  scissors: ["paper", "lizard"],
+  lizard: ["paper", "spock"],
+  spock: ["rock", "scissors"],
+};
 const WINNING_CONDITION_NUM = 3;
 let score = { player: 0, computer: 0 };
 
@@ -46,33 +53,11 @@ function chooseRandomIndex() {
 }
 
 function playerWins(playerChoice, computerChoice) {
-  return (
-    (playerChoice === "rock" &&
-      (computerChoice === "scissors" || computerChoice === "lizard")) ||
-    (playerChoice === "paper" &&
-      (computerChoice === "rock" || computerChoice === "spock")) ||
-    (playerChoice === "scissors" &&
-      (computerChoice === "paper" || computerChoice === "lizard")) ||
-    (playerChoice === "lizard" &&
-      (computerChoice === "paper" || computerChoice === "spock")) ||
-    (playerChoice === "spock" &&
-      (computerChoice === "rock" || computerChoice === "scissors"))
-  );
+  return WINNING_COMBOS[playerChoice].includes(computerChoice);
 }
 
 function computerWins(playerChoice, computerChoice) {
-  return (
-    (playerChoice === "rock" &&
-      (computerChoice === "paper" || computerChoice === "spock")) ||
-    (playerChoice === "paper" &&
-      (computerChoice === "scissors" || computerChoice === "lizard")) ||
-    (playerChoice === "scissors" &&
-      (computerChoice === "rock" || computerChoice === "spock")) ||
-    (playerChoice === "lizard" &&
-      (computerChoice === "scissors" || computerChoice === "rock")) ||
-    (playerChoice === "spock" &&
-      (computerChoice === "paper" || computerChoice === "lizard"))
-  );
+  return WINNING_COMBOS[computerChoice].includes(playerChoice);
 }
 
 function computeTurnResult(choice, computerChoice) {

@@ -4,7 +4,7 @@
   "invalidChoice": "That's not a valid choice",
   "shortcutHint": "HINT: try the shortcuts",
   "playerChoiceIs": "You chose",
-  "computerChoiceIs": "Computer chose",
+  "computerChoiceIs": "computer chose",
   "playerWinsRound": "You won this round!",
   "computerWinsRound": "Computer won this round!",
   "currentScore": "The current score is:",
