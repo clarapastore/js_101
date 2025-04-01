@@ -98,11 +98,7 @@ function askUserToContinue() {
     MESSAGES.invalidRoundAnswer,
     MESSAGES.askAnotherRound
   );
-  if (answer[0] !== "y") {
-    return true;
-  } else {
-    return false;
-  }
+  return answer[0] !== "y";
 }
 
 function isFinalWinner(propString) {
