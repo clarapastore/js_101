@@ -32,7 +32,7 @@ function isValidChoice(input) {
 }
 
 function isValidAnswer(input) {
-  return input === "y" || input === "yes" || input === "n" || input === "no";
+  return ["y", "yes", "n", "no"].includes(input);
 }
 
 function isChoiceShortcut(choice) {
