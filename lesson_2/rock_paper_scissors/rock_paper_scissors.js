@@ -13,7 +13,7 @@ const WINNING_COMBOS = {
   lizard: ["paper", "spock"],
   spock: ["rock", "scissors"],
 };
-const WINNING_CONDITION_NUM = 3;
+const WINS_NEEDED_FOR_MATCH = 3;
 let score = { player: 0, computer: 0 };
 
 function prompt(message) {
@@ -105,7 +105,7 @@ function doYouWantToContinue() {
 }
 
 function isFinalWinner(propString) {
-  return score[propString] === WINNING_CONDITION_NUM;
+  return score[propString] === WINS_NEEDED_FOR_MATCH;
 }
 
 function displayFinalWinner(finalWinner) {
