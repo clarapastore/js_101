@@ -49,22 +49,10 @@ function chooseRandomIndex() {
   return Math.floor(Math.random() * VALID_CHOICES.length);
 }
 
-function playerWins(playerChoice, computerChoice) {
-  return WINNING_COMBOS[playerChoice].includes(computerChoice);
-}
-
-function computerWins(playerChoice, computerChoice) {
-  return WINNING_COMBOS[computerChoice].includes(playerChoice);
-}
-
-function computeTurnResult(choice, computerChoice) {
-  if (playerWins(choice, computerChoice)) {
-    return "player";
-  } else if (computerWins(choice, computerChoice)) {
-    return "computer";
-  } else {
-    return "tie";
-  }
+function getWinner(playerChoice, computerChoice) {
+  if (WINNING_COMBOS[playerChoice].includes(computerChoice)) return "player";
+  if (WINNING_COMBOS[computerChoice].includes(playerChoice)) return "computer";
+  return "tie";
 }
 
 function displayTurnWinner(turnScore) {
@@ -154,7 +142,7 @@ while (true) {
     `${MESSAGES.playerChoiceIs} ${choice}, ${MESSAGES.computerChoiceIs} ${computerChoice}`
   );
 
-  let turnResult = computeTurnResult(choice, computerChoice);
+  let turnResult = getWinner(choice, computerChoice);
   displayTurnWinner(turnResult);
 
   score = updateScore(turnResult, score);
