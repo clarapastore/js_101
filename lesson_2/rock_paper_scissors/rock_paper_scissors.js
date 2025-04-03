@@ -1,14 +1,5 @@
-// TODO: have a way to figure out if there is a final winner.
-// If there is, return the winner
-// Otherwise, return null
-// At the end of each round, check the value of finalWinner
-// If it's player, output player wins to console
-// If it's computer, output computer wins to console
-// If it's null, do nothing
-// Then, use the value of finalWinner to determine whether
-// to end the game
-// If there's a final winner, end the game
-// otherwise, ask to play again
+// TODO: Make valid answers array its own const
+// TODO: reorganize order of functions in the way they appear in the program
 
 const readline = require("readline-sync");
 const MESSAGES = require("./messages.json");
@@ -104,29 +95,40 @@ function updateScore(turnScore) {
   }
 }
 
-function askUserToContinue() {
+function doYouWantToContinue() {
   let answer = getValidInput(
     isValidAnswer,
     MESSAGES.invalidRoundAnswer,
     MESSAGES.askAnotherRound
   );
-  return answer[0] !== "y";
+  return answer[0] === "y";
 }
 
 function isFinalWinner(propString) {
   return score[propString] === WINNING_CONDITION_NUM;
 }
 
-function isGameOver() {
-  if (isFinalWinner("player")) {
-    prompt(MESSAGES.playerWinsMatch);
-    return true;
-  } else if (isFinalWinner("computer")) {
-    prompt(MESSAGES.computerWinsMatch);
-    return true;
-  } else {
-    return askUserToContinue();
+function displayFinalWinner(finalWinner) {
+  switch (finalWinner) {
+    case "player": {
+      prompt(MESSAGES.playerWinsMatch);
+      break;
+    }
+    case "computer": {
+      prompt(MESSAGES.computerWinsMatch);
+      break;
+    }
+    default:
+      break;
   }
+}
+
+function computeMatchResult() {
+  if (isFinalWinner("player")) {
+    return "player";
+  } else if (isFinalWinner("computer")) {
+    return "computer";
+  } else return null;
 }
 
 console.clear();
@@ -157,9 +159,15 @@ while (true) {
     `${MESSAGES.currentScore}\n You: ${score.player}, Computer: ${score.computer}`
   );
 
-  if (isGameOver()) break;
+  let finalWinner = computeMatchResult();
 
-  console.clear();
+  if (finalWinner) {
+    displayFinalWinner(finalWinner);
+    break;
+  } else if (doYouWantToContinue()) {
+    console.clear();
+    continue;
+  }
 }
 
 prompt(MESSAGES.goodbye);
