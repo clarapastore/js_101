@@ -69,9 +69,9 @@ function displayTurnWinner(turnScore) {
   }
 }
 
-function updateScore(turnScore, score) {
+function updateScore(turnResult, score) {
   const newScore = { ...score };
-  switch (turnScore) {
+  switch (turnResult) {
     case "player":
       newScore.player += 1;
       break;
