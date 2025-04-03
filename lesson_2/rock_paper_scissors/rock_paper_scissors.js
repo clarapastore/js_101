@@ -1,3 +1,15 @@
+// TODO: have a way to figure out if there is a final winner.
+// If there is, return the winner
+// Otherwise, return null
+// At the end of each round, check the value of finalWinner
+// If it's player, output player wins to console
+// If it's computer, output computer wins to console
+// If it's null, do nothing
+// Then, use the value of finalWinner to determine whether
+// to end the game
+// If there's a final winner, end the game
+// otherwise, ask to play again
+
 const readline = require("readline-sync");
 const MESSAGES = require("./messages.json");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
