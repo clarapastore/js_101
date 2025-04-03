@@ -142,10 +142,10 @@ while (true) {
     `${MESSAGES.playerChoiceIs} ${choice}, ${MESSAGES.computerChoiceIs} ${computerChoice}`
   );
 
-  let turnResult = getWinner(choice, computerChoice);
-  displayTurnWinner(turnResult);
+  let turnWinner = getWinner(choice, computerChoice);
+  displayTurnWinner(turnWinner);
 
-  score = updateScore(turnResult, score);
+  score = updateScore(turnWinner, score);
   prompt(
     `${MESSAGES.currentScore}\n You: ${score.player}, Computer: ${score.computer}`
   );
