@@ -166,7 +166,6 @@ while (true) {
     break;
   } else if (doYouWantToContinue()) {
     console.clear();
-    continue;
   } else {
     break;
   }
