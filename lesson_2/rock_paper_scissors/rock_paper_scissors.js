@@ -14,7 +14,6 @@ const WINNING_COMBOS = {
   spock: ["rock", "scissors"],
 };
 const WINS_NEEDED_FOR_MATCH = 3;
-let score = { player: 0, computer: 0 };
 
 function prompt(message) {
   console.log(`=> ${message}`);
@@ -82,17 +81,19 @@ function displayTurnWinner(turnScore) {
   }
 }
 
-function updateScore(turnScore) {
+function updateScore(turnScore, score) {
+  const newScore = { ...score };
   switch (turnScore) {
     case "player":
-      score.player += 1;
+      newScore.player += 1;
       break;
     case "computer":
-      score.computer += 1;
+      newScore.computer += 1;
       break;
     default:
       break;
   }
+  return newScore;
 }
 
 function doYouWantToContinue() {
@@ -104,7 +105,7 @@ function doYouWantToContinue() {
   return answer[0] === "y";
 }
 
-function isFinalWinner(propString) {
+function isFinalWinner(score, propString) {
   return score[propString] === WINS_NEEDED_FOR_MATCH;
 }
 
@@ -123,16 +124,18 @@ function displayFinalWinner(finalWinner) {
   }
 }
 
-function computeMatchResult() {
-  if (isFinalWinner("player")) {
+function computeMatchResult(score) {
+  if (isFinalWinner(score, "player")) {
     return "player";
-  } else if (isFinalWinner("computer")) {
+  } else if (isFinalWinner(score, "computer")) {
     return "computer";
   } else return null;
 }
 
 console.clear();
 prompt(MESSAGES.welcome);
+
+let score = { player: 0, computer: 0 };
 
 while (true) {
   prompt(
@@ -152,14 +155,14 @@ while (true) {
   );
 
   let turnResult = computeTurnResult(choice, computerChoice);
-
   displayTurnWinner(turnResult);
-  updateScore(turnResult);
+
+  score = updateScore(turnResult, score);
   prompt(
     `${MESSAGES.currentScore}\n You: ${score.player}, Computer: ${score.computer}`
   );
 
-  let finalWinner = computeMatchResult();
+  let finalWinner = computeMatchResult(score);
 
   if (finalWinner) {
     displayFinalWinner(finalWinner);
