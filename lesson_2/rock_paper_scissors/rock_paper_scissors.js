@@ -1,5 +1,3 @@
-// TODO: reorganize order of functions in the way they appear in the program
-
 const readline = require("readline-sync");
 const MESSAGES = require("./messages.json");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
