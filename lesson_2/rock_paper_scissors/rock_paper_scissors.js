@@ -1,10 +1,10 @@
-// TODO: Make valid answers array its own const
 // TODO: reorganize order of functions in the way they appear in the program
 
 const readline = require("readline-sync");
 const MESSAGES = require("./messages.json");
 const VALID_CHOICES = ["rock", "paper", "scissors", "lizard", "spock"];
 const VALID_SHORTCUTS = ["r", "p", "sc", "l", "sp"];
+const VALID_ANSWERS = ["y", "yes", "n", "no"];
 const MAX_LENGTH_SHORTCUT = 2;
 const WINNING_COMBOS = {
   rock: ["scissors", "lizard"],
@@ -35,7 +35,7 @@ function isValidChoice(input) {
 }
 
 function isValidAnswer(input) {
-  return ["y", "yes", "n", "no"].includes(input);
+  return VALID_ANSWERS.includes(input);
 }
 
 function isChoiceShortcut(choice) {
@@ -167,6 +167,8 @@ while (true) {
   } else if (doYouWantToContinue()) {
     console.clear();
     continue;
+  } else {
+    break;
   }
 }
 
